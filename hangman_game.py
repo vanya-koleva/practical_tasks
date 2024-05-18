@@ -63,7 +63,9 @@ class HangmanGame:
         choose_button.pack()
 
     def choose_category(self):
-        """Allow the player to choose a category and set the current_category attribute"""
+        """
+        Allow the player to choose a category and set the current_category attribute
+        """
         if self.category_listbox.curselection():
             index = self.category_listbox.curselection()[0]
             self.current_category = self.category_listbox.get(index)
@@ -71,7 +73,9 @@ class HangmanGame:
             self.choose_new_word()
 
     def choose_new_word(self):
-        """Choose a random new word from the selected category and reset the game attributes"""
+        """
+        Choose a random new word from the selected category and reset the game attributes
+        """
         self.secret_word = random.choice(self.categories[self.current_category])
         self.guesses_left = 6
         self.guesses = set()
@@ -79,7 +83,9 @@ class HangmanGame:
         self.draw_hangman()
 
     def draw_hangman(self):
-        """Draw the hang and the hangman based on the number of incorrect guesses"""
+        """
+        Draw the hang and the hangman based on the number of incorrect guesses
+        """
         self.canvas.delete("all")
         # Draw the hang
         self.canvas.create_line(50, 350, 150, 350)
@@ -101,7 +107,9 @@ class HangmanGame:
             self.canvas.create_line(200, 200, 220, 240)  # right leg
 
     def guess_letter(self):
-        """Process player's guess and update the game state accordingly"""
+        """
+        Process player's guess and update the game state accordingly
+        """
         guess = self.entry.get().lower()
         self.entry.delete(0, tk.END)
         # Check if the guess is valid
@@ -136,7 +144,9 @@ class HangmanGame:
         self.score_label['text'] = "Score: " + str(self.score)
 
     def update_word_display(self):
-        """Update the displayed word with the guessed letters"""
+        """
+        Update the displayed word with the guessed letters
+        """
         displayed_word = [letter if letter in self.guesses else '_' for letter in self.secret_word]
         self.word_display['text'] = ' '.join(displayed_word)
 
